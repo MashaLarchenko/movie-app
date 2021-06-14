@@ -1,0 +1,59 @@
+@import "./base.scss";
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600&display=swap");
+
+body {
+  background-image: url(../public/images/background2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: drop-shadow(2px 4px 6px black);
+  background-attachment: fixed;
+  font-family: "Baloo Tammudu 2", cursive;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-gap: 2%;
+  margin: 3%;
+}
+
+.hide {
+  display: none;
+}
+
+.movies {
+  &__container {
+    min-height: 80vh;
+    align-content: center;
+  }
+}
+
+.card {
+  color: white;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e4e4e470;
+    justify-self: baseline;
+    min-width: 500px;
+  }
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+  }
+}
+
+// .movies {
+//   &__container {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr;
+//     text-align: center;
+//   }
+// }
