@@ -1,22 +1,15 @@
-// import { getState } from '../model/state';
 import MoviePageRender from '../pages/MoviePage';
-import { getById, getStorage } from '../storage';
+import { getById } from '../storage';
 
 export default class Listner {
-  static init() {
-    this.mainPage = document.body.querySelector('.movies__container');
-    this.cards = document.querySelectorAll('.card__item');
-    this.active = '';
-  }
-
   static listen() {
-    Listner.init();
-
-    this.cards.forEach((item) => {
+    const mainPage = document.querySelector('.movies__container');
+    const cards = document.querySelectorAll('.card__item');
+    cards?.forEach((item) => {
       item.addEventListener('click', (e) => {
         const movieData = getById(+e.currentTarget.dataset.id);
-        console.log(movieData, 'movieData', e.currentTarget.dataset.id, getStorage());
         if (movieData) {
+          mainPage.classList.add('hide');
           MoviePageRender(movieData);
         }
       });

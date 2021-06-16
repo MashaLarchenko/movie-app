@@ -1,5 +1,3 @@
-// import MainPageRender from './pages/main/view';
-// import Listner from './controller/listners';
 import Listner from './controller';
 import MainPageRender from './pages/MainPage';
 import { setStorage } from './storage';
@@ -13,15 +11,5 @@ export default class App {
     MainPageRender(movies.data);
 
     Listner.listen();
-    // console.log(movies, cardContainerView);
-
-    // const overlay = document.createElement('div');
-    // overlay.classList.add('overlay');
-    // document.body.appendChild(overlay);
-    // const currentPage = getStorage().currentPage !== ''
-    // ? getStorage().currentPage : document.querySelector('.main__container');
-    // setGlobalState('currentPage', currentPage);
-    // MainPageRender();
-    // Listner.listen();
   }
 }

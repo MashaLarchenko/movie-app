@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600&display=swap");
 
 body {
-  background-image: url(../public/images/background2.jpg);
+  background-image: url(../public/images/back3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,33 +12,41 @@ body {
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  grid-gap: 2%;
-  margin: 3%;
+  min-height: 80vh;
+  align-content: center;
+}
+
+.movies {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    grid-gap: 20px;
+    margin: 1%;
+    min-height: 80vh;
+    align-content: center;
+  }
 }
 
 .hide {
   display: none;
 }
 
-.movies {
-  &__container {
-    min-height: 80vh;
-    align-content: center;
-  }
-}
-
 .card {
-  color: white;
   &__item {
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #e4e4e470;
+    background: #03283ead;
     justify-self: baseline;
-    min-width: 500px;
+    min-width: 420px;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      background: #03283ead;
+    }
   }
 
   &__title {
@@ -48,12 +56,92 @@ body {
   &__subtitle {
     font-size: 20px;
   }
+
+  &__image {
+    height: 650px;
+    padding-bottom: 15px;
+  }
 }
 
-// .movies {
-//   &__container {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 1fr 1fr;
-//     text-align: center;
-//   }
-// }
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px 10px;
+  justify-items: center;
+  width: 70%;
+  &__score {
+    font-size: 18px;
+    color: #ff9613;
+    font-weight: 900;
+  }
+
+  &__date {
+    font-size: 16px;
+  }
+
+  &__genre {
+    grid-column: 1 / 3;
+    text-align: center;
+    color: #dc7125;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+  }
+}
+
+.movie {
+  &__item {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    margin-block: 50px;
+    background: #03283ead;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    text-align: left;
+    padding: 0 5%;
+
+    .info {
+      width: 35%;
+      &__date {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 33px;
+    font-weight: 900;
+  }
+
+  &__description {
+    line-height: 28px;
+    font-size: 18px;
+  }
+
+  &__image {
+    min-height: 750px;
+    align-self: center;
+  }
+}
+
+.button {
+  &__back {
+    color: #dc7125;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    background: #031c2ba6;
+    padding: 5px 15px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 3px;
+  }
+}
