@@ -1,15 +1,28 @@
-import Listner from './controller';
-import MainPageRender from './pages/MainPage';
-import { setStorage } from './storage';
+var Listner = require('./controller');
+var MainPageRender = require('./pages/MainPage');
+var setStorage = require('./storage').setStorage;
 
-export default class App {
-  static async start() {
-    const response = await fetch('https://react-cdp-api.herokuapp.com/movies/');
+var App = {
+  start: function () {
+    // var movies;
+    fetch('https://react-cdp-api.herokuapp.com/movies/').then(function (response) {
+      return response.json();
+    })
+      .then(function (movies) {
+        setStorage('data', movies.data);
+        MainPageRender(movies.data);
+    
+        Listner.listen();
+      })
+      .catch(function (error) {
+        consoole.log(error);
+      });
 
-    const movies = await response.json();
-    setStorage('data', movies.data);
-    MainPageRender(movies.data);
+    // setStorage('data', movies.data);
+    // MainPageRender(movies.data);
 
-    Listner.listen();
+    // Listner.listen();
   }
 }
+
+module.exports = App;

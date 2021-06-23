@@ -1,15 +1,15 @@
-import cardItem from './CardItem';
+var cardItem = require('./CardItem');
 
-export default class CardContainer {
-  constructor(movies) {
-    this.movies = movies;
-  }
-
-  render() {
-    const cardContainer = document.createElement('section');
-    cardContainer.classList.add('container', 'movies__container');
-    const moviesContent = this.movies.map((item) => cardItem(item));
-    cardContainer.innerHTML = moviesContent.join('');
-    document.body.appendChild(cardContainer);
-  }
+function CardContainer(movies) {
+  this.movies = movies;
 }
+
+CardContainer.prototype.render = function () {
+  var cardContainer = document.createElement('section');
+  cardContainer.classList.add('container', 'movies__container');
+  var moviesContent = this.movies.map(function (item) { return cardItem(item) });
+  cardContainer.innerHTML = moviesContent.join('');
+  document.body.appendChild(cardContainer);
+}
+
+module.exports = CardContainer;

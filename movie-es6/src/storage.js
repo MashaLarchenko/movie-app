@@ -1,14 +1,14 @@
-const storage = {
+var storage = {
   currentPage: '',
   data: [],
 };
 
-const getStorage = () => storage;
+var getStorage = function () { return storage };
 
-const getById = (id) => storage.data.find((item) => item.id === id);
+var getById = function (id) { return storage.data.find(function (item) { return item.id === id }) };
 
-const setStorage = (key, value) => {
+var setStorage = function (key, value) {
   storage[key] = value;
 };
 
-export { getStorage, getById, setStorage };
+module.exports = { getStorage: getStorage, getById: getById, setStorage: setStorage };

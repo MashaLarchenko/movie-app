@@ -1,18 +1,23 @@
-import MoviePageRender from '../pages/MoviePage';
-import { getById } from '../storage';
+var MoviePageRender = require('../pages/MoviePage');
+var storage = require('../storage');
 
-export default class Listner {
-  static listen() {
-    const mainPage = document.querySelector('.movies__container');
-    const cards = document.querySelectorAll('.card__item');
-    cards?.forEach((item) => {
-      item.addEventListener('click', (e) => {
-        const movieData = getById(+e.currentTarget.dataset.id);
-        if (movieData) {
-          mainPage.classList.add('hide');
-          MoviePageRender(movieData);
-        }
+var Listner = {
+  listen: function () {
+    var mainPage = document.querySelector('.movies__container');
+    var cards = document.querySelectorAll('.card__item');
+
+    if (cards) {
+      cards.forEach(function (item) {
+        return item.addEventListener('click', function (e) {
+          var movieData = storage.getById(+e.currentTarget.dataset.id);
+          if (movieData) {
+            mainPage.classList.add('hide');
+            MoviePageRender(movieData);
+          }
+        });
       });
-    });
+    }
   }
 }
+
+module.exports = Listner;

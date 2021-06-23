@@ -1,10 +1,14 @@
-import movieSectionRender from '../../view/movieSection';
-import MovieListner from './listener';
+var movieSectionRender = require('../../view/movieSection');
+var MovieListner = require('./listener');
 
-const MoviePageRender = (data) => {
-  document.body.querySelector('.movies__container')?.classList.add('hide');
+var MoviePageRender = function (data) {
+  var movieContainer = document.body.querySelector('.movies__container');
+
+  if(movieContainer) {
+    movieContainer.classList.add('hide');
+  }
   document.body.appendChild(movieSectionRender(data));
-  MovieListner.listen();
+  new MovieListner().listen();
 };
 
-export default MoviePageRender;
+module.exports = MoviePageRender;

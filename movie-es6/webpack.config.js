@@ -1,5 +1,5 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,7 +11,7 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
-      { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader' },
+      // { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader' },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,

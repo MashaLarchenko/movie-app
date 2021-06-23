@@ -1,8 +1,13 @@
-import CardContainer from '../../view/CardContainer';
+var CardContainer = require('../../view/CardContainer');
 
-const MainPageRender = (data) => {
-  document.body.querySelector('.movieCard-wrapper')?.classList.add('hide');
+var MainPageRender = function (data) {
+  var movieCardWrapper = document.body.querySelector('.movieCard-wrapper');
+
+  if (movieCardWrapper) {
+    movieCardWrapper.classList.add('hide');
+  }
+
   new CardContainer(data).render();
 };
 
-export default MainPageRender;
+module.exports = MainPageRender;
