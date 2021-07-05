@@ -10,7 +10,6 @@ var App = {
 
     request.onload = function () {
       var movies = request.response;
-      console.log(request.response)
       setStorage('data', movies.data);
       MainPageRender(movies.data);
 
