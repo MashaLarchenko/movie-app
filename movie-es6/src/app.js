@@ -4,24 +4,24 @@ var setStorage = require('./storage').setStorage;
 
 var App = {
   start: function () {
-    // var movies;
-    fetch('https://react-cdp-api.herokuapp.com/movies/').then(function (response) {
-      return response.json();
-    })
-      .then(function (movies) {
-        setStorage('data', movies.data);
-        MainPageRender(movies.data);
-    
-        Listner.listen();
-      })
-      .catch(function (error) {
-        consoole.log(error);
-      });
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://react-cdp-api.herokuapp.com/movies/');
+    request.responseType = 'json';
 
-    // setStorage('data', movies.data);
-    // MainPageRender(movies.data);
+    request.onload = function () {
+      var movies = request.response;
+      console.log(request.response)
+      setStorage('data', movies.data);
+      MainPageRender(movies.data);
 
-    // Listner.listen();
+      Listner.listen();
+    };
+
+    request.onerror = function () {
+      consoole.log(error);
+    };
+
+    request.send();
   }
 }
 
