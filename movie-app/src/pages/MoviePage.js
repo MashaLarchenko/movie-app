@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { getById } from '../storage'
+import { getMovieById } from '../services'
 // import PropTypes from "prop-types";
 
-function MoviePage(id) {
-  const [movie, setMovie] = useState({});
+function MoviePage({id}) {
+  const [movie, setMovie] = useState(null);
+
 
   useEffect(() => {
-    const movieById = getById(id);
-    setMovie(movieById);
+    async function fetchData() {
+      const movieById = await getMovieById(+id);
+      console.log(movieById, 'movie')
+      setMovie(movieById);
+    }
+    fetchData();
+    // return () => {
+    //   controller.abort();
+    // };
   }, [id]);
 
 
+
   return (
-    <section className="movieCard-wrapper">
-      <div className='movie__item'>
+    <section className="movieCard-wrapper" >
+      {movie ? <div className='movie__item'>
         <img src={movie.poster_path} className='movie__image' alt={movie.title}></img>
         <div className='movie__content'>
           <h3 className='movie__title'>{movie.title}</h3>
@@ -24,8 +33,9 @@ function MoviePage(id) {
           <p className='movie__subtitle'>{movie.tagline}</p>
           <p className='movie__description'>{movie.overview}</p>
         </div>
-      </div>
+      </div> : null}
     </section>
+
 
   );
 }
