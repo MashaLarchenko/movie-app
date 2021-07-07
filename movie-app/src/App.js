@@ -6,7 +6,6 @@ import MoviePage from './pages/MoviePage';
 export default function App() {
   return (
     <div className="app__wrapper">
-      {/* <CardContainer /> */}
       <Router>
         <Route path='/' component={CardContainer} exact/>
         <Route

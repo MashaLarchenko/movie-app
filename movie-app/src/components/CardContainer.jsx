@@ -3,31 +3,31 @@ import CardItem from "./CardItem";
 import { getMovies } from "../services";
 import { setStorage } from "../storage";
 
-const controller = new AbortController();
-
 function CardContainer() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchData() {
       const allMovies = await getMovies();
-      console.log('into cont', allMovies)
       setMovies(allMovies.data);
       setStorage(allMovies.data);
     }
     fetchData();
+    
     return () => {
       controller.abort();
     };
   }, []);
 
   return (
-    <section className="cards__container">
+    <section className="container movies__container">
       {console.log(movies)}
       {movies.length ? (
-        movies.map((movie) => <CardItem data={movie} />)
+        movies.map((movie) => <CardItem data={movie} key={movie.id} />)
       ) : (
-        <h3 className="emptyThings">Things are empty</h3>
+        <h3 className="emptyThings">No movie found</h3>
       )}
     </section>
   );

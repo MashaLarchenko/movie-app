@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { getMovieById } from '../services'
-// import PropTypes from "prop-types";
+import { getMovieById } from '../services';
+import BackButton from "../components/BackButton";
+import PropTypes from "prop-types";
 
-function MoviePage({id}) {
+function MoviePage({ id }) {
   const [movie, setMovie] = useState(null);
 
-
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchData() {
-      const movieById = await getMovieById(+id);
-      console.log(movieById, 'movie')
+      const movieById = await getMovieById(id);
       setMovie(movieById);
     }
     fetchData();
-    // return () => {
-    //   controller.abort();
-    // };
+
+    return () => {
+      controller.abort();
+    };
   }, [id]);
 
 
 
   return (
     <section className="movieCard-wrapper" >
+      <BackButton />
       {movie ? <div className='movie__item'>
         <img src={movie.poster_path} className='movie__image' alt={movie.title}></img>
         <div className='movie__content'>
@@ -40,11 +43,8 @@ function MoviePage({id}) {
   );
 }
 
-// CardItem.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   email: PropTypes.string.isRequired,
-//   id: PropTypes.string.isRequired,
-//   deleted: PropTypes.func.isRequired,
-// };
+MoviePage.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default MoviePage;

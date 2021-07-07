@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function CardItem({
  data
@@ -21,11 +21,8 @@ function CardItem({
   );
 }
 
-// CardItem.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   email: PropTypes.string.isRequired,
-//   id: PropTypes.string.isRequired,
-//   deleted: PropTypes.func.isRequired,
-// };
+CardItem.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default CardItem;

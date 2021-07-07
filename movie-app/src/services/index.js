@@ -9,12 +9,11 @@ const getMovies = catchError(async () => {
 
   if (!response.ok) {
     throw new Error(
-      `Could not fetch ${process.env.REACT_APP_BASE_URL}, received ${response.status}`,
+      `Could not fetch https://react-cdp-api.herokuapp.com/movies/, received ${response.status}`,
     );
   }
 
   const result = await response.json();
-  console.log('into serv', result);
   return result;
 });
 
@@ -26,13 +25,11 @@ const getMovieById = catchError(async (id) => {
 
   if (!response.ok) {
     throw new Error(
-      `Could not fetch ${process.env.REACT_APP_BASE_URL}, received ${response.status}`,
+      `Could not fetch https://react-cdp-api.herokuapp.com/movies/${id}, received ${response.status}`,
     );
   }
 
   const result = await response.json();
-
-  console.log('into serv', result);
   return result;
 });
 
